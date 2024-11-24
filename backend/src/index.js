@@ -10,10 +10,22 @@ dotenv.config();
 
 const app = express()
 
+console.log(process.env.CLINT_PORT)
+
 app.use(cors({
     origin: process.env.CLINT_PORT,
     credentials: true
 }))
+app.use(function (req, res, next) {
+    res.header("Access-Control-Allow-Origin", process.env.CLINT_PORT);
+    res.header("Access-Control-Allow-Credentials", true);
+    res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE,OPTIONS");
+    res.header(
+        "Access-Control-Allow-Headers",
+        "Content-Type, Authorization"
+    );
+    next();
+});
 app.use(express.json())
 app.use(bodyParser.json())
 
