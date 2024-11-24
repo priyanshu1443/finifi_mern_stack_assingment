@@ -13,11 +13,11 @@ const app = express()
 console.log(process.env.CLINT_PORT)
 
 app.use(cors({
-    origin: 'https://finifi-mern-stack-assingment-kdl80vod7-priyanshu1443s-projects.vercel.app',
+    origin: process.env.CLINT_PORT,
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
 }));
 app.use((req, res, next) => {
-    res.header("Access-Control-Allow-Origin", "https://finifi-mern-stack-assingment-kdl80vod7-priyanshu1443s-projects.vercel.app");
+    res.header("Access-Control-Allow-Origin", process.env.CLINT_PORT);
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
     next();
